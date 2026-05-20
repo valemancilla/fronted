@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Premium Space</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@400;600;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="space-background"></div>
+
+    <div class="content-wrapper">
+        <div class="left-section">
+            <div class="hero-text">
+                <h1>JOIN OUR<br><span class="highlight-purple">UNIVERSE!</span></h1>
+            </div>
+        </div>
+        
+        <div class="right-section">
+            <main class="glass-card">
+                <div class="logo-area">
+                    <p>Create Account</p>
+                </div>
+                
+                <form class="login-form" action="index.html">
+                    <div class="input-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="username@gmail.com" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" placeholder="Create password" required>
+                            <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                                <i class="ph ph-eye-slash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="confirm-password" placeholder="Confirm password" required>
+                            <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                                <i class="ph ph-eye-slash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" style="margin-top: 10px;">Sign Up</button>
+                </form>
+                
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                
+                <p class="footer-text">
+                    Already have an account? <a href="index.html">Sign in</a>
+                </p>
+                
+                <img src="astronaut_chibi_bg-removebg-preview.png" alt="Astronaut" class="astronaut-img">
+            </main>
+        </div>
+    </div>
+    
+    <script src="move.js"></script>
+</body>
+</html>

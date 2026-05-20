@@ -1,0 +1,275 @@
+/* style-dashboard.css - Cinematic Premium Edition */
+:root {
+    --bg-base: #030008;
+    --primary-cyan: #00f2fe;
+    --primary-purple: #9d50e5;
+    --primary-blue: #4facfe;
+    --success-green: #10b981;
+    --glass-bg: rgba(255, 255, 255, 0.02);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-highlight: rgba(255, 255, 255, 0.25);
+    --text-main: #ffffff;
+    --text-muted: #a0aec0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    background-color: var(--bg-base);
+    min-height: 100vh;
+    overflow: hidden; /* Previene scroll por elementos absolutos */
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- CINEMATIC BACKGROUND --- */
+.bg-stars {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(1px 1px at 10% 20%, rgba(255, 255, 255, 0.8) 100%, transparent),
+        radial-gradient(1px 1px at 30% 60%, rgba(255, 255, 255, 0.8) 100%, transparent),
+        radial-gradient(2px 2px at 70% 40%, rgba(255, 255, 255, 0.8) 100%, transparent),
+        radial-gradient(1.5px 1.5px at 90% 80%, rgba(255, 255, 255, 0.8) 100%, transparent),
+        radial-gradient(1px 1px at 40% 10%, rgba(255, 255, 255, 0.4) 100%, transparent),
+        radial-gradient(1.5px 1.5px at 60% 90%, rgba(255, 255, 255, 0.4) 100%, transparent);
+    background-size: 250px 250px;
+    opacity: 0.35;
+    z-index: 1;
+    animation: panStars 120s linear infinite;
+}
+
+@keyframes panStars {
+    from { background-position: 0 0; }
+    to { background-position: -1000px 1000px; }
+}
+
+.bg-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 2;
+    opacity: 0.5;
+    animation: drift 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bg-glow-1 {
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(157, 80, 229, 0.15) 0%, transparent 70%);
+    top: -20vh;
+    left: -10vw;
+}
+
+.bg-glow-2 {
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.1) 0%, transparent 70%);
+    bottom: -10vh;
+    right: -10vw;
+    animation-delay: -5s;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes drift {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(8vw, 6vh) scale(1.15); }
+}
+
+/* --- MAIN CONTAINER --- */
+.dashboard-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- TOP BAR --- */
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px 0;
+    margin-bottom: 20px;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logout-btn i {
+    font-size: 18px;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--glass-highlight);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* --- WELCOME CARD --- */
+.welcome-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    perspective: 1200px;
+}
+
+.welcome-card-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    animation: floatIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Retroiluminación de la tarjeta (Backlight Glow) */
+.card-ambient-light {
+    position: absolute;
+    inset: -15px;
+    background: linear-gradient(135deg, rgba(157, 80, 229, 0.5), rgba(0, 242, 254, 0.4));
+    filter: blur(60px);
+    border-radius: 40px;
+    opacity: 0.6;
+    z-index: -1;
+    animation: pulseAmbient 4s infinite alternate ease-in-out;
+}
+
+@keyframes pulseAmbient {
+    0% { opacity: 0.4; transform: scale(0.95); }
+    100% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.welcome-card {
+    background: var(--glass-bg);
+    border-radius: 32px;
+    padding: 50px 40px;
+    text-align: center;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    /* Efecto 3D Realista de Cristal (Grosor e iluminación en los bordes) */
+    border-top: 1px solid var(--glass-highlight);
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.7),
+        inset 0 0 20px rgba(255, 255, 255, 0.02);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
+}
+
+/* Efecto hover interactivo sobre el cristal */
+.welcome-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 40px 80px rgba(0, 0, 0, 0.8),
+        inset 0 0 30px rgba(255, 255, 255, 0.05);
+}
+
+.welcome-content {
+    position: relative;
+    z-index: 10;
+}
+
+.welcome-card h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    /* Efecto de texto brillante premium */
+    background: linear-gradient(135deg, #ffffff 20%, #a0aec0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.welcome-card p {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* --- SUCCESS ICON --- */
+.success-icon-wrapper {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 40px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-icon-wrapper i {
+    font-size: 48px;
+    color: var(--success-green);
+    position: relative;
+    z-index: 5;
+    filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.9));
+}
+
+.pulse-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid var(--success-green);
+    opacity: 0;
+}
+
+.pulse-ring-1 {
+    animation: ripple 2.5s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pulse-ring-2 {
+    animation: ripple 2.5s infinite cubic-bezier(0.16, 1, 0.3, 1);
+    animation-delay: 1.25s;
+}
+
+@keyframes ripple {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+
+
+/* --- ANIMATIONS --- */
+@keyframes floatIn {
+    0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 640px) {
+    .welcome-card {
+        padding: 40px 24px;
+    }
+    .welcome-card h1 {
+        font-size: 32px;
+    }
+}
