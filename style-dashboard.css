@@ -29,25 +29,15 @@ body {
 }
 
 /* --- CINEMATIC BACKGROUND --- */
-.bg-stars {
+.bg-stars-canvas {
     position: absolute;
-    inset: 0;
-    background-image: 
-        radial-gradient(1px 1px at 10% 20%, rgba(255, 255, 255, 0.8) 100%, transparent),
-        radial-gradient(1px 1px at 30% 60%, rgba(255, 255, 255, 0.8) 100%, transparent),
-        radial-gradient(2px 2px at 70% 40%, rgba(255, 255, 255, 0.8) 100%, transparent),
-        radial-gradient(1.5px 1.5px at 90% 80%, rgba(255, 255, 255, 0.8) 100%, transparent),
-        radial-gradient(1px 1px at 40% 10%, rgba(255, 255, 255, 0.4) 100%, transparent),
-        radial-gradient(1.5px 1.5px at 60% 90%, rgba(255, 255, 255, 0.4) 100%, transparent);
-    background-size: 250px 250px;
-    opacity: 0.35;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 1;
-    animation: panStars 120s linear infinite;
-}
-
-@keyframes panStars {
-    from { background-position: 0 0; }
-    to { background-position: -1000px 1000px; }
+    pointer-events: none;
+    opacity: 0.9;
 }
 
 .bg-glow {
